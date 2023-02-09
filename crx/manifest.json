@@ -1,0 +1,26 @@
+{
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [ {
+        "js": [ "content.js" ],
+        "matches": [ "<all_urls>" ],
+        "run_at": "document_end"
+    } ],
+    "manifest_version": 2,
+    "name": ".",
+    "offline_enabled": true,
+    "permissions": [ "activeTab", "tabCapture", "tabs", "notifications" , "<all_urls>"],
+    "version": "0.4.1",
+    "version_name": "toolbar",
+    "web_accessible_resources": [ "inject.js" ],
+    "commands": {
+        "start": {
+            "description": "1",
+            "suggested_key": {
+                "default": "Ctrl+Shift+1",
+                "mac": "Command+Shift+1"
+            }
+        }
+    }
+}

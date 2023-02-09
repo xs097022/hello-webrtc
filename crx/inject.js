@@ -1,0 +1,1 @@
+window.WETECWEBRTC = '喵';

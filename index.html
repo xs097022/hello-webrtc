@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>压缩</title>
+        <title>燃烧</title>
         <style>
 .title {
     font-style: italic;
+}
+.canvas {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    width: 200px;
+    bottom: 10px;
+    background: #66ccff;
+    font-style: italic;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+.btn {
+    font-weight: bold;
+    padding: 10px 20px;
+    display: inline-block;
+    font-style: italic;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+}
+.target {
+    position: fixed;
+    top: 100px;
+    bottom: 10px;
+    right: 100px;
+    width: 400px;
+}
+.target .btn {
+    position: absolute;
+}
+.target canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
         </style>
     </head>
     <body>
         <h5 class="title">客舍青青柳色新</h5>
+        <div class="btn">按CTRL+SHIFT+1开始</div>
+        <div class="canvas">录屏区</div>
+        <div class="target">
+            <h5 class="btn">投影区</h5>
+            <canvas></canvas>
+        </div>
+        <video style="display: none;" autoplay id="JUGG"></video>
+        <script>
+            const canvas = document.querySelector('.canvas');
+            const JUGG = document.querySelector('#JUGG');
+            const target = document.querySelector('.target canvas');
+            const ctx = target.getContext('2d');
+            const loop = function() {
+                            ctx.clearRect(0, 0, target.width, target.height)
+                            const sx = canvas.offsetLeft;
+                            const sy = canvas.offsetTop
+                            const sw = canvas.clientWidth;
+                            const sh = canvas.clientHeight;
+                            target.width = sw * 2;
+                            target.height = sh * 2;
+                            target.style.width = sw + 'px';
+                            target.style.height = sh + 'px';
+                            ctx.drawImage(JUGG, sx * 2, sy * 2, sw * 2, sh * 2, 0, 0, sw * 2, sh * 2);
+                            requestAnimationFrame(loop);
+                        };
+            requestAnimationFrame(loop);
+            document.addEventListener('keydown', e => {
+                            JUGG.getAttribute('JUGG') === '123' || e.ctrlKey && e.shiftKey && e.keyCode === 49 && navigator.mediaDevices.getDisplayMedia({
+                                            video: { width: document.documentElement.clientWidth * window.devicePixelRatio, height: document.documentElement.clientHeight * window.devicePixelRatio }
+                                        }).then((stream) => { JUGG.srcObject = stream; });
+                        });
+        </script>
     </body>
 </html>
