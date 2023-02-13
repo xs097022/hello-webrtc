@@ -98,6 +98,7 @@
     const _pc = _PC.create((Map => async (e, _pc) => {
         const _Map = {
             track(e) {
+                console.log(e, 99);
                 JUGG.srcObject = e.streams[0];
             }
         };

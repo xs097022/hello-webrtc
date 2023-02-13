@@ -55,7 +55,7 @@ const _PC = function() {
     };
     const create = function(onchange) {
         const _pc = new RTCPeerConnection();
-        const _onchange = e => (onchange(e, _pc));
+        const _onchange = e => (console.log(e.type), onchange(e, _pc));
         _pc.onicecandidate = _onchange
         _pc.oniceconnectionstatechange = _onchange;
         _pc.onicegatheringstatechange = _onchange;
@@ -86,6 +86,11 @@ const _pc = _PC.create((Map => async (e, _pc) => {
     const _Map = {
         track(stream) {
             console.log(stream);
+        },
+        datachannel(e) {
+            e.channel.onmessage = function(msg) {
+                console.log(msg, 0);
+            }
         }
     };
     const f = _Map[e.type] || Map[e.type];

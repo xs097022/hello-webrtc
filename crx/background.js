@@ -118,10 +118,4 @@ chrome.commands.onCommand.addListener((_, b) => {
             }
         }
     }, stream => _PC.addStream(_pc, stream));
-    console.log({
-        minWidth: b.width * window.devicePixelRatio,
-        minHeight: b.height * window.devicePixelRatio,
-        maxWidth: b.width * window.devicePixelRatio,
-        maxHeight: b.height * window.devicePixelRatio
-    });
 });

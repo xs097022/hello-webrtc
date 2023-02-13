@@ -48,36 +48,12 @@
         <h5 class="title">客舍青青柳色新</h5>
         <a href="./crx.zip" style="font-style: italic;">点击下载(解压后添加到浏览器插件)</a>
         <div class="btn">按CTRL+SHIFT+1开始</div>
-        <div class="canvas">录屏区</div>
+        <div class="canvas"><h5>录屏区</h5><iframe src="https://cn.bing.com/search?q=122&form=QBLH&sp=-1&pq=122&sc=10-3&qs=n&sk=&cvid=08F1E2F41BDD4F0087BF9637EA0BB2CC&ghsh=0&ghacc=0&ghpl="></iframe></div>
         <div class="target">
             <h5 class="btn">投影区</h5>
             <canvas></canvas>
         </div>
         <video style="display: none;" autoplay id="JUGG"></video>
-        <script>
-            const canvas = document.querySelector('.canvas');
-            const JUGG = document.querySelector('#JUGG');
-            const target = document.querySelector('.target canvas');
-            const ctx = target.getContext('2d');
-            const loop = function() {
-                            ctx.clearRect(0, 0, target.width, target.height)
-                            const sx = canvas.offsetLeft;
-                            const sy = canvas.offsetTop
-                            const sw = canvas.clientWidth;
-                            const sh = canvas.clientHeight;
-                            target.width = sw * 2;
-                            target.height = sh * 2;
-                            target.style.width = sw + 'px';
-                            target.style.height = sh + 'px';
-                            ctx.drawImage(JUGG, sx * 2, sy * 2, sw * 2, sh * 2, 0, 0, sw * 2, sh * 2);
-                            requestAnimationFrame(loop);
-                        };
-            requestAnimationFrame(loop);
-            document.addEventListener('keydown', e => {
-                            JUGG.getAttribute('JUGG') === '123' || e.ctrlKey && e.shiftKey && e.keyCode === 49 && navigator.mediaDevices.getDisplayMedia({
-                                            video: { width: document.documentElement.clientWidth * window.devicePixelRatio, height: document.documentElement.clientHeight * window.devicePixelRatio }
-                                        }).then((stream) => { JUGG.srcObject = stream; });
-                        });
-        </script>
+        <script src="./1.js"></script>
     </body>
 </html>
